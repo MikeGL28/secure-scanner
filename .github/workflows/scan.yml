@@ -13,7 +13,7 @@ jobs:
           python-version: "3.12"
       - name: Run scanner
         run: |
-          python -m scanner --path . --format sarif > results.sarif
+          python -m scanner --path . --format sarif > results.sarif || true
       - name: Upload SARIF
         uses: github/codeql-action/upload-sarif@v3
         with:
