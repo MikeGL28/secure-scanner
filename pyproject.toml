@@ -1,0 +1,15 @@
+[project]
+name = "secure-scanner"
+version = "0.1.0"
+description = "Static code analyzer for Python with CVE and SAST support"
+requires-python = ">=3.12"
+dependencies = [
+    "django==6.0.0",
+    "requests==2.32.3",
+    "flask==3.0.4",
+    "tomli; python_version < '3.11'"
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
