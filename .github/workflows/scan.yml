@@ -12,14 +12,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run scanner
+
+      - name: Install dependencies
         run: |
-          python -m scanner --path . --format sarif > results.sarif || true
+          pip install -r requirements.txt
+
+      - name: Run scanner and generate SARIF
+        run: |
+          python -m scanner --path . --format sarif > secure-scanner-results.sarif || true
+
       - name: Upload SARIF
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: results.sarif
+          sarif_file: secure-scanner-results.sarif
